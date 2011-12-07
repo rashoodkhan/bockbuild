@@ -19,6 +19,7 @@ class BansheePackages:
 			'libpng.py',
 			'libjpeg.py',
 			'libxml2.py',
+			'libffi.py',
 			'freetype.py',
 			'fontconfig.py',
 			'pixman.py',

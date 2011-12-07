@@ -90,8 +90,8 @@ class BansheePackages:
 			'mono.py',
 			'gtk-sharp.py',
 			'mono-addins.py',
-			'ndesk-dbus.py',
-			'ndesk-dbus-glib.py',
+			'dbus-sharp.py',
+			'dbus-sharp-glib.py',
 			'taglib-sharp.py',
 		])
 

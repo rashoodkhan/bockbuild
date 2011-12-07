@@ -11,7 +11,8 @@ class BansheePackages:
 			'automake.py',
 			'libtool.py',
 			'gettext.py',
-			'pkg-config.py'
+			'pkg-config.py',
+			'cmake.py'
 		])
 
 		# Base Libraries
@@ -60,6 +61,7 @@ class BansheePackages:
 
 		# Codecs
 		self.packages.extend ([
+			'orc.py',
 			'libogg.py',
 			'libvorbis.py',
 			'flac.py',

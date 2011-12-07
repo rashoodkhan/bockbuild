@@ -12,7 +12,6 @@ class BansheePackages:
 			'libtool.py',
 			'gettext.py',
 			'pkg-config.py',
-			'cmake.py'
 		])
 
 		# Base Libraries

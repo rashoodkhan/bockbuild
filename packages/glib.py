@@ -2,8 +2,8 @@ class GlibPackage (GnomePackage):
 	def __init__ (self):
 		GnomePackage.__init__ (self,
 			'glib',
-			version_major = '2.28',
-			version_minor = '8')
+			version_major = '2.30',
+			version_minor = '2')
 
 		self.darwin = Package.profile.name == 'darwin'
 		self.macports_svn = 'http://svn.macports.org/repository/macports/trunk/dports/devel/glib2/files'
@@ -11,11 +11,12 @@ class GlibPackage (GnomePackage):
 		if Package.profile.name == 'darwin':
 			self.sources.extend (['%{macports_svn}/' + s for s in [
 				'config.h.ed',
-				'patch-configure.ac.diff',
+				'patch-configure.diff',
 				'patch-glib-2.0.pc.in.diff',
 				'patch-glib_gunicollate.c.diff',
 				'patch-gi18n.h.diff',
 				'patch-gio_xdgmime_xdgmime.c.diff',
+				'patch-gio_gdbusprivate.c.diff',
 			]])
 
 	def prep (self):

@@ -20,6 +20,7 @@ class BansheePackages:
 			'libjpeg.py',
 			'libxml2.py',
 			'libffi.py',
+			'tiff.py',
 			'freetype.py',
 			'fontconfig.py',
 			'pixman.py',
@@ -70,6 +71,7 @@ class BansheePackages:
 
 		# GStreamer
 		self.packages.extend ([
+			'orc.py',
 			'liboil.py',
 			'gstreamer.py',
 			'gst-plugins-base.py',

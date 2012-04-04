@@ -7,6 +7,7 @@ class GstPluginsGoodPackage (GstreamerPackage):
 				'--disable-cairo',
 				'--disable-jpeg',
 				'--disable-libpng',
+				'--disable-deinterlace',
 				'--disable-annodex'
 			]
 		)

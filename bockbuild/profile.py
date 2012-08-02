@@ -9,6 +9,7 @@ class Profile:
 	def __init__ (self, prefix = False):
 		self.name = 'default'
 		self.build_root = os.path.join (os.getcwd (), 'build-root')
+		self.profile_dir = os.getcwd ()
 		self.prefix = prefix if prefix else os.path.join (self.build_root, '_install')
 		self.env = Environment (self)
 		self.env.set ('BUILD_PREFIX', self.prefix)

@@ -56,6 +56,7 @@ class DarwinProfile (UnixProfile):
 		self.env.set ('GTK2_RC_FILES', '%{gtk2_rc_files}')
 
 	def bundle (self):
+		UnixProfile.bundle (self)
 		self.make_app_bundle ()
 
 	def make_app_bundle (self):

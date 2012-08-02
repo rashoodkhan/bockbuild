@@ -1,4 +1,5 @@
 from profile import Profile
+from util.util import *
 
 class UnixProfile (Profile):
 	def __init__ (self, prefix = False):
@@ -40,3 +41,16 @@ class UnixProfile (Profile):
 		self.env.set ('XDG_CONFIG_DIRS', '%{prefix}/etc/xdg')
 		self.env.set ('XDG_DATA_DIRS',   '%{prefix}/share')
 		self.env.set ('XDG_CONFIG_HOME', '$HOME/.config')
+
+	def bundle (self):
+		# make sure to compile required solitary before bundling
+		run_shell ('echo "\n### BUILDING SOLITARY"')
+		solitary_path = os.path.join (self.profile_dir, "../../solitary")
+		os.chdir (self.profile_dir)
+		print "CURRENT WORKING DIR:"
+		print os.getcwd ()
+		print "#####"
+		cmd = "pushd %s && make && popd" % solitary_path
+		print cmd 
+		print "#####"
+		run_shell (cmd)

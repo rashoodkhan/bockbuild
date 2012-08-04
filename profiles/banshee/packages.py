@@ -130,12 +130,8 @@ class BansheePackages:
 				'gtk-mac-integration.py'
 			])
 
-		if self.cmd_options.release_build:
-			# build stable banshee version
-			self.packages.append ('banshee.py')
-		else:
-			# use banshee from git
-			self.packages.append ('banshee-git.py')
+		self.packages.append ('banshee.py')
+		self.packages.append ('banshee-bce.py')
 
 		self.packages = [os.path.join ('..', '..', 'packages', p)
 			for p in self.packages]

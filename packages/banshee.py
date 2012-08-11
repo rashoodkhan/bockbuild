@@ -45,7 +45,11 @@ class BansheePackage (BansheeBasePackage):
 
 				# code cleanup, remove VolumeButton and use gtk
 				# https://bugzilla.gnome.org/show_bug.cgi?id=681062
-				'http://bugzilla-attachments.gnome.org/attachment.cgi?id=220140',
+				# 'http://bugzilla-attachments.gnome.org/attachment.cgi?id=220140',
+
+				# fix volume reset between changing tracks
+				# https://bugzilla.gnome.org/show_bug.cgi?id=681639
+				'https://bugzilla.gnome.org/attachment.cgi?id=220919'
 			])
 
 # you can set force_latest_git_mater to True when you want to build latest

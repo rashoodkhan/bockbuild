@@ -33,23 +33,13 @@ class BansheePackage (BansheeBasePackage):
 			self.git_branch = 'master'
 
 			self.sources.extend([
-				'https://github.com/Dynalon/banshee-osx/pull/1.diff',
-
-				# https://bugzilla.gnome.org/show_bug.cgi?id=677866
-				'http://bugzilla-attachments.gnome.org/attachment.cgi?id=217548',
+				# https://bugzilla.gnome.org/show_bug.cgi?id=682093
+				'http://bugzilla-attachments.gnome.org/attachment.cgi?id=221592'
 
 				# watch out: this patch might not make it into master
 				# see the bgo report at
 				# https://bugzilla.gnome.org/show_bug.cgi?id=679252
 				'http://bugzilla-attachments.gnome.org/attachment.cgi?id=217821',
-
-				# code cleanup, remove VolumeButton and use gtk
-				# https://bugzilla.gnome.org/show_bug.cgi?id=681062
-				# 'http://bugzilla-attachments.gnome.org/attachment.cgi?id=220140',
-
-				# fix volume reset between changing tracks
-				# https://bugzilla.gnome.org/show_bug.cgi?id=681639
-				'https://bugzilla.gnome.org/attachment.cgi?id=220919'
 			])
 
 # you can set force_latest_git_mater to True when you want to build latest

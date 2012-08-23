@@ -30,16 +30,9 @@ class BansheePackage (BansheeBasePackage):
 		else:
 			BansheeBasePackage.__init__ (self, 'master')
 			# non-release build, use latest git master
-			self.git_branch = 'master'
+			self.git_branch = '2.5.0'
 
 			self.sources.extend([
-				# https://bugzilla.gnome.org/show_bug.cgi?id=682093
-				'http://bugzilla-attachments.gnome.org/attachment.cgi?id=221592',
-
-				# watch out: this patch might not make it into master
-				# see the bgo report at
-				# https://bugzilla.gnome.org/show_bug.cgi?id=679252
-				'http://bugzilla-attachments.gnome.org/attachment.cgi?id=217821'
 			])
 
 # you can set force_latest_git_mater to True when you want to build latest

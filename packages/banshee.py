@@ -18,19 +18,17 @@ class BansheePackage (BansheeBasePackage):
 		global BansheeBasePackage;
 
 		if (Package.profile.cmd_options.release_build and not force_latest_git_master):
-			BansheeBasePackage.__init__ (self, 'banshee-2.4')
+			BansheeBasePackage.__init__ (self, 'banshee-2.6')
 			# release build, specify stable git branch
-			self.git_branch = 'stable-2.4'
+			self.git_branch = 'stable-2.6'
 
 			self.sources.extend([
-				# switch over from ige_* to gtk_* binding
-				'http://git.gnome.org/browse/banshee/patch/?id=d71b1031124424fcfa226536c57a4575a635ad7c'
 			])
 
 		else:
 			BansheeBasePackage.__init__ (self, 'master')
 			# non-release build, use latest git master
-			self.git_branch = '2.5.0'
+			self.git_branch = 'master'
 
 			self.sources.extend([
 			])

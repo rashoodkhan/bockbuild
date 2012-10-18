@@ -3,7 +3,9 @@ class BansheeBasePackage (Package):
 		Package.__init__ (self, 'banshee', version)
 
 		self.sources = [
-			'git://git.gnome.org/banshee'
+			'git://git.gnome.org/banshee',
+			# workaround against broken gtk_reparent_*  on gtk-quartz
+			'https://github.com/Dynalon/banshee-osx/commit/798ba9ad74f91b1bc9e7ad7c36d6044fceb7a1d5.diff'
 		]
 
 		self.configure = [ 'NOCONFIGURE=1 ./autogen.sh && ./profile-configure %{profile.name} --prefix=%{prefix}' ]

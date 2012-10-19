@@ -3,7 +3,7 @@ class BansheeBcePackage (Package):
 		Package.__init__ (self, 'banshee-community-extensions', 'master')
 
 		self.sources = [
-			'git@gitorious.org:~dynalon/banshee-community-extensions/banshee-community-extensions-macosx.git',
+			'git://gitorious.org/~dynalon/banshee-community-extensions/banshee-community-extensions-macosx.git'
 		]
 		self.git_branch = 'master'
 

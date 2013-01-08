@@ -1,10 +1,10 @@
 class MonoMacPackage (Package):
 	def __init__ (self):
 		self.pkgconfig_version = '1.0'
-		self.maccore_tag = '0b71453'
-		self.maccore_source_dir_name = 'mono-maccore-0b71453'
-		self.monomac_tag = 'ae428c7'
-		self.monomac_source_dir_name = 'mono-monomac-ae428c7'	
+		self.maccore_tag = 'a7c4e50'
+		self.maccore_source_dir_name = 'mono-maccore-a7c4e50'
+		self.monomac_tag = '6bfc9b8'
+		self.monomac_source_dir_name = 'mono-monomac-6bfc9b8'	
 		
 		Package.__init__ (self, 'monomac', self.monomac_tag)
 		

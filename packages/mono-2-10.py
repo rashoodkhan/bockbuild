@@ -3,7 +3,7 @@ import os
 class MonoTwoTenPackage(Package):
 
 	def __init__(self):
-		Package.__init__(self, 'mono', '2.10.10',
+		Package.__init__(self, 'mono', '2.10.11',
 			sources = ['git://github.com/mono/mono'],
 			git_branch = 'mono-2-10',
 			revision = os.getenv('MONO_BUILD_REVISION'),
@@ -20,11 +20,19 @@ class MonoTwoTenPackage(Package):
 					'--build=i386-apple-darwin11.2.0',
 					'--enable-loadedllvm'
 					])
-			self.sources.extend(['patches/pkg-config'])
+
+			self.sources.extend ([
+					# Fixes up pkg-config usage on the Mac
+					'patches/mcs-pkgconfig.patch'
+					])
 
 		self.configure = './autogen.sh'
 
-	def install(self):
-		Package.install(self)
+	def prep (self):
+		Package.prep (self)
+		if Package.profile.name == 'darwin':
+			for p in range (1, len (self.sources)):
+				self.sh ('patch -p1 < "%{sources[' + str (p) + ']}"')
+
 
 MonoTwoTenPackage()

@@ -5,7 +5,13 @@ class BansheeBasePackage (Package):
 		self.sources = [
 			'git://git.gnome.org/banshee',
 			# workaround against broken gtk_reparent_*  on gtk-quartz
-			'https://github.com/Dynalon/banshee-osx/commit/798ba9ad74f91b1bc9e7ad7c36d6044fceb7a1d5.diff'
+			'https://github.com/Dynalon/banshee-osx/commit/798ba9ad74f91b1bc9e7ad7c36d6044fceb7a1d5.diff',
+
+			# bugfix for corrupted .dmg background
+			'http://bugzilla-attachments.gnome.org/attachment.cgi?id=229975',
+
+			# disable gio-* hw, bgo#693903
+			'https://bugzilla.gnome.org/attachment.cgi?id=236272',
 		]
 
 		self.configure = [ 'NOCONFIGURE=1 ./autogen.sh && ./profile-configure %{profile.name} --prefix=%{prefix}' ]
@@ -37,4 +43,4 @@ class BansheePackage (BansheeBasePackage):
 
 # you can set force_latest_git_mater to True when you want to build latest
 # source from git for testing purposes but use packages from the release list
-BansheePackage (force_latest_git_master = False)
+BansheePackage (force_latest_git_master = True)

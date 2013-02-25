@@ -1,15 +1,11 @@
-class GtkPackage (GnomeXzPackage):
+class GtkPackage (GnomeGitPackage):
 	def __init__ (self):
-		GnomeXzPackage.__init__ (self, 'gtk+',
-			version_major = '2.24',
-			version_minor = '11',
+		GnomeGitPackage.__init__ (self, 'gtk+', '2.24', '0004fe6cd44bf1033f606c0f9fe9a3784eeb4e73',
 			configure_flags = [
 				'--with-gdktarget=%{gdk_target}',
-				'--prefix="%{prefix}"'
 #				'--disable-cups',
 			]
 		)
-		self.configure = './configure'
 		self.gdk_target = 'x11'
 
 		if Package.profile.name == 'darwin':
@@ -18,16 +14,47 @@ class GtkPackage (GnomeXzPackage):
 				# Custom gtkrc
 				'patches/gtkrc',
 
-				# post 2.24.11 commits
-				# Bug 681784 Colorspaces used in gtk+ and cairo quartz backends do not match
-				'http://git.gnome.org/browse/gtk+/patch/?id=48547aadef8547686ae43cb317caeb882ecc2699',
-				# quartz: add evil casting to make sure time wraps correctly on 32bit machines
-				'http://git.gnome.org/browse/gtk+/patch/?id=c0c3085128b0af739c73db31f9330508aad8f2e6',
-				# quartz: fix corruption during scrolling in some cases
-				'http://git.gnome.org/browse/gtk+/patch/?id=3d5cd6e0553131bf7bec30e0524a66a4d481821b',
+				# smooth scrolling, scrollbars, overscroll
+				'patches/gtk-scrolling/0001-Add-gdk_screen_get_monitor_workarea-and-use-it-all-o.patch',
+				'patches/gtk-scrolling/0002-gtk-don-t-scroll-combo-box-menus-if-less-than-3-item.patch',
+				'patches/gtk-scrolling/0003-gtk-paint-only-the-exposed-region-in-gdk_window_expo.patch',
+				'patches/gtk-scrolling/0004-Implement-gtk-enable-overlay-scrollbars-GtkSetting.patch',
+				'patches/gtk-scrolling/0005-Smooth-scrolling.patch',
+				'patches/gtk-scrolling/0006-gtk-Add-a-way-to-do-event-capture.patch',
+				'patches/gtk-scrolling/0007-gtk-don-t-let-insensitive-children-eat-scroll-events.patch',
+				'patches/gtk-scrolling/0008-scrolledwindow-Kinetic-scrolling-support.patch',
+				'patches/gtk-scrolling/0009-gtk-paint-to-the-right-windows-in-gtk_scrolled_windo.patch',
+				'patches/gtk-scrolling/0010-GtkScrolledWindow-add-overlay-scrollbars.patch',
+				'patches/gtk-scrolling/0011-gtk-add-event-handling-to-GtkScrolledWindow-s-overla.patch',
+				'patches/gtk-scrolling/0012-Use-gtk-enable-overlay-scrollbars-in-GtkScrolledWind.patch',
+				'patches/gtk-scrolling/0013-gtk-correctly-handle-toggling-of-the-scrollbar-visib.patch',
+				'patches/gtk-scrolling/0014-gtk-handle-gtk-primary-button-warps-slider-for-the-o.patch',
+				'patches/gtk-scrolling/0015-Introduce-phase-field-in-GdkEventScroll.patch',
+				'patches/gtk-scrolling/0016-Add-hack-to-lock-flow-of-scroll-events-to-window-whe.patch',
+				'patches/gtk-scrolling/0017-Introduce-a-background-window.patch',
+				'patches/gtk-scrolling/0018-Make-scrolled-window-work-well-with-Mac-touchpad.patch',
+				'patches/gtk-scrolling/0019-Use-start-end-phase-in-event-handling.patch',
+				'patches/gtk-scrolling/0020-Improve-overshooting-behavior.patch',
+				'patches/gtk-scrolling/0021-Cancel-out-smaller-delta-component.patch',
+				'patches/gtk-scrolling/0022-quartz-Add-a-dummy-NSView-serving-as-layer-view.patch',
+				'patches/gtk-scrolling/0023-gtk-port-overlay-scrollbars-to-native-CALayers.patch',
+				'patches/gtk-scrolling/0024-Refrain-from-starting-fading-out-while-a-gesture-is-.patch',
+				'patches/gtk-scrolling/0025-gtk-don-t-show-the-olverlay-scrollbars-if-only-the-s.patch',
+				'patches/gtk-scrolling/0026-Reclamp-unclamped-adjustments-after-resize.patch',
+				'patches/gtk-scrolling/0027-gtk-fix-size_request-of-scrolled-window.patch',
+				'patches/gtk-scrolling/0028-Hackish-fix-for-bug-8493-Min-size-of-GtkScrolledWind.patch',
+				'patches/gtk-scrolling/0029-quartz-add-gdk_screen_-and-gdk_window_get_scale_fact.patch',
+				'patches/gtk-scrolling/0030-gtk-add-gtk_widget_get_scale_factor.patch',
+				'patches/gtk-scrolling/0031-iconfactory-Add-_scaled-variants.patch',
+				'patches/gtk-scrolling/0032-widget-Add-_scaled-variants-for-icon-rendering.patch',
+				'patches/gtk-scrolling/0033-image-Use-scaled-icons-on-windows-with-a-scaling-fac.patch',
+				'patches/gtk-scrolling/0034-cellrendererpixbuf-Use-scaled-icons-on-windows-with-.patch',
+				'patches/gtk-scrolling/0035-entry-Use-scaled-icons-on-windows-with-a-scale-facto.patch',
+				'patches/gtk-scrolling/0036-gtk-use-gtk_widget_get_scale_factor-and-cache-scaled.patch',
+				'patches/gtk-scrolling/fix-overlay-scrollbar-grab.diff',
+				'patches/gtk-scrolling/fix-mouse-events-1.patch',
+				'patches/gtk-scrolling/fix-mouse-events-2.patch',
 
-				# smooth scrolling, https://bugzilla.gnome.org/show_bug.cgi?id=516725
-				'http://bugzilla-attachments.gnome.org/attachment.cgi?id=201916',
 
 				# make new modifier behviour opt-in, so as not to break old versions of MonoDevelop
 				'patches/gdk-quartz-set-fix-modifiers-hack-v3.patch',
@@ -36,25 +63,16 @@ class GtkPackage (GnomeXzPackage):
 				# also prints some warnings that may help to debug the real issue
 				'https://bugzilla.xamarin.com/attachment.cgi?id=1644',
 
-				# Backport of gdk_screen_get_monitor_workarea
-				# Tooltip etc now honor menu and dock when positioning
-				'patches/gtk-monitor-workarea.patch',
-
 				# Embedded NSViews
-				'patches/gtk-embedded-nsview/0001-gtk-add-new-widget-GtkNSView-which-alows-to-embed-an.patch',
-				'patches/gtk-embedded-nsview/0002-quartz-return-events-on-embedded-foreign-NSViews-bac.patch',
-				'patches/gtk-embedded-nsview/0003-gdk-add-signal-GdkWindow-native-child-event.patch',
-				'patches/gtk-embedded-nsview/0004-tests-add-a-GtkEntry-to-testnsview-so-we-can-test-fo.patch',
-				'patches/gtk-embedded-nsview/0005-gtk-connect-to-GdkWindow-native-child-event-to-imple.patch',
+				'patches/gtk-embedded-nsview/0001-quartz-return-events-on-embedded-foreign-NSViews-bac.patch',
+				'patches/gtk-embedded-nsview/0002-gtk-add-new-widget-GtkNSView-which-alows-to-embed-an.patch',
+				'patches/gtk-embedded-nsview/fix-for-embedded-nsviews.patch',
 
 				# Zoom, rotate, swipe events
-				'https://bugzilla.xamarin.com/attachment.cgi?id=1965',
+				'patches/gtk-gestures.patch',
 
-				# Bug 4656 - Massive overdraw when scrolling in text editor
-				'https://bugzilla.xamarin.com/attachment.cgi?id=1858',
-
-				# Bug 2158 - [GTK] crash in find_window_for_ns_event
-				'https://bugzilla.xamarin.com/attachment.cgi?id=2182',
+				# Fix gtk_window_begin_move_drag on Quartz
+				'patches/gtk-quartz-move-drag.patch',
 
 				# Bug 6156 - [gtk] Quitting the application with unsaved file and answering Cancel results in crash
 				'https://bugzilla.xamarin.com/attachment.cgi?id=2214',

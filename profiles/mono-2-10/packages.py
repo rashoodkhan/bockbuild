@@ -5,15 +5,21 @@ class MonoReleasePackages:
 	def __init__(self):
 
 		# Toolchain
-		self.packages.extend([
-				# 'autoconf.py',
-				# 'automake.py',
-				# 'libtool.py',
-				'xz.py',
-				'tar.py',
-				'gettext.py',
-				'pkg-config.py'
-				])
+		self.packages.extend ([
+			'xz.py',
+			'tar.py',
+			'autoconf.py',
+			'automake.py',
+			'libtool.py',
+			'gettext.py',
+			'pkg-config.py'
+		])
+
+		#needed to autogen gtk+
+		self.packages.extend ([
+			'gtk-osx-docbook.py',
+			'gtk-doc.py',
+		])
 
 		# # Base Libraries
 		self.packages.extend([
@@ -45,7 +51,9 @@ class MonoReleasePackages:
 				'librsvg.py',
 				'hicolor-icon-theme.py',
 				'gtk-engines.py',
-				# 'gtk-quartz-engine.py'
+				'murrine.py',
+				'xamarin-gtk-theme.py',
+				'gtk-quartz-engine.py'
 				])
 
 		# Mono

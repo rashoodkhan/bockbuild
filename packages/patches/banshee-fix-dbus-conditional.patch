@@ -1,0 +1,12 @@
+diff --git configure.ac configure.ac
+index f36063e..8885544 100644
+--- configure.ac
++++ configure.ac
+@@ -146,6 +146,7 @@ if test "x$enable_gnome" = "xyes"; then
+ else
+ 	AM_CONDITIONAL(GCONF_SCHEMAS_INSTALL, false)
+ 	AM_CONDITIONAL(ENABLE_GNOME, false)
++	AM_CONDITIONAL(HAVE_DBUS_GLIB, false)
+ fi
+ 
+ dnl DAP support (each module is optional)

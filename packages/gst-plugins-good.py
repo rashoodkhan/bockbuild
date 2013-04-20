@@ -5,6 +5,7 @@ class GstPluginsGoodPackage (GstreamerPackage):
 				'--disable-gtk-doc',
 				'--disable-gdk_pixbuf',
 				'--disable-cairo',
+				'--disable-cairo_gobject',
 				'--disable-jpeg',
 				'--disable-libpng',
 				'--disable-deinterlace',

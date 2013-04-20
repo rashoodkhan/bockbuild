@@ -1,1 +1,1 @@
-GnomePackage ('gdk-pixbuf', version_major = '2.24', version_minor = '0')
+GnomeXzPackage ('gdk-pixbuf', version_major = '2.27', version_minor = '1')

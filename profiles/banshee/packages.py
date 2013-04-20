@@ -33,7 +33,8 @@ class BansheePackages:
 			'atk.py',
 			'intltool.py',
 			'gdk-pixbuf.py',
-			'gtk+.py',
+			#'gtk+.py',
+			'gtk+3.py',
 			'gconf-dummy.py',
 			'libgpg-error.py',
 			'libgcrypt.py',
@@ -48,13 +49,13 @@ class BansheePackages:
 		# banshee-community-extensions
 		self.packages.extend ([
 			# lastfm fingerprint
-			'fftw.py',
-			'libsamplerate.py',
+			#'fftw.py',
+			#'libsamplerate.py',
 
 			# openvp (currently not working)
 			#'libopentk.py',
-			'libsdl.py',
-			'libglade.py',
+			#'libsdl.py',
+			#'libglade.py',
 
 		])
 
@@ -63,7 +64,7 @@ class BansheePackages:
 		if not self.cmd_options.release_build:
 			self.packages.extend ([
 				# BCE streamrecorder
-				'lame.py',
+				#'lame.py',
 			])
 
 		# WebKit-gtk
@@ -81,7 +82,7 @@ class BansheePackages:
 
 		# Theme
 		self.packages.extend ([
-			'librsvg.py',
+			#'librsvg.py',
 			'icon-naming-utils.py',
 			'hicolor-icon-theme.py',
 			'tango-icon-theme.py',
@@ -116,18 +117,19 @@ class BansheePackages:
 		# Mono
 		self.packages.extend ([
 			'mono.py',
-			'gtk-sharp.py',
+			#'gtk-sharp.py',
+			'gtk-sharp3.py',
 			'mono-addins.py',
 			'dbus-sharp.py',
 			'dbus-sharp-glib.py',
 			'taglib-sharp.py',
-			'mono-upnp.py',
+			#'mono-upnp.py',
 		])
 
 		if isinstance (self, DarwinProfile):
 			self.packages.extend ([
 				'monomac.py',
-				'gtk-mac-integration.py'
+				#'gtk-mac-integration.py'
 			])
 
 		self.packages.append ('banshee.py')

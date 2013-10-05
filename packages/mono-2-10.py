@@ -3,8 +3,8 @@ import os
 class MonoTwoTenPackage(Package):
 
 	def __init__(self):
-		Package.__init__(self, 'mono', '2.10.11',
-			sources = ['git://github.com/mono/mono'],
+		Package.__init__(self, 'mono', '2.10.12',
+			sources = ['git://github.com/mono/mono.git'],
 			git_branch = 'mono-2-10',
 			revision = os.getenv('MONO_BUILD_REVISION'),
 			configure_flags = [

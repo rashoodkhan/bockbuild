@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class GtkSharpPackage (Package):
 	def __init__ (self):
 		Package.__init__ (self, 'gtk-sharp', '2-12-branch')

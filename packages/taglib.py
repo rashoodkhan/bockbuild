@@ -1,3 +1,6 @@
-Package ('taglib', '1.6.3', sources = [
-	'http://developer.kde.org/~wheeler/files/src/%{name}-%{version}.tar.gz'
-])
+Package ('taglib', '1.8',
+	sources = [
+		'http://taglib.github.io/releases/%{name}-%{version}.tar.gz'
+	],
+	configure= 'cmake .',
+)

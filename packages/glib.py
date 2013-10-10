@@ -2,8 +2,8 @@ class GlibPackage (GnomeXzPackage):
 	def __init__ (self):
 		GnomeXzPackage.__init__ (self,
 			'glib',
-			version_major = '2.36',
-			version_minor = '3')
+			version_major = '2.38',
+			version_minor = '0')
 
 		self.darwin = Package.profile.name == 'darwin'
 
@@ -13,7 +13,7 @@ class GlibPackage (GnomeXzPackage):
 				# https://trac.macports.org/export/91680/trunk/dports/devel/glib2/files/config.h.ed
 				'patches/glib/config.h.ed',
 				# https://trac.macports.org/export/98985/trunk/dports/devel/glib2/files/patch-configure.diff
-				'patches/glib/patch-configure.diff',
+				#'patches/glib/patch-configure.diff',
 				# https://trac.macports.org/export/42728/trunk/dports/devel/glib2/files/patch-gi18n.h.diff
 				'patches/glib/patch-gi18n.h.diff',
 				# https://trac.macports.org/export/92608/trunk/dports/devel/glib2/files/patch-gio_gdbusprivate.c.diff
@@ -33,7 +33,7 @@ class GlibPackage (GnomeXzPackage):
 	def prep (self):
 		Package.prep (self)
 		if self.darwin:
-			for p in range (2, 8):
+			for p in range (2, 7):
 				self.sh ('patch -p0 < %{sources[' + str (p) + ']}')
 			for p in range (8, len (self.sources)):
 				self.sh ('patch --ignore-whitespace -p1 < %{sources[' + str (p) + ']}')

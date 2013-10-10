@@ -1,10 +1,10 @@
 class CairoPackage (CairoGraphicsXzPackage):
 	def __init__ (self):
-		CairoGraphicsXzPackage.__init__ (self, 'cairo', '1.12.14')
+		CairoGraphicsXzPackage.__init__ (self, 'cairo', '1.12.16')
 		self.sources.extend ([
-			'patches/cairo-quartz-crash.patch',
-			'patches/cairo-fix-color-bitmap-fonts.patch',
-			'patches/cairo-disablable-antialiasing.patch',
+#			'patches/cairo-quartz-crash.patch',
+#			'patches/cairo-fix-color-bitmap-fonts.patch',
+#			'patches/cairo-disablable-antialiasing.patch',
 #			'patches/cairo-cglayer.patch',
 		])
 
@@ -17,16 +17,18 @@ class CairoPackage (CairoGraphicsXzPackage):
 
 	def build (self):
 		self.configure_flags = [
-			'--enable-pdf'
+			'--enable-pdf',
 		]
 
 		if Package.profile.name == 'darwin':
 			self.configure_flags.extend ([
 				'--enable-quartz',
-				'--enable-quartz-font',
-				'--enable-quartz-image',
+				#'--enable-quartz-font',
+				#'--enable-quartz-image',
 				'--disable-xlib',
-				'--without-x'
+				'--without-x',
+				# for gtk3
+				'--enable-gobject=yes'
 			])
 		elif Package.profile.name == 'linux':
 			self.configure_flags.extend ([

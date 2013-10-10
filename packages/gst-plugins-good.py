@@ -19,7 +19,11 @@ class GstPluginsGoodPackage (GstreamerPackage):
 		if Package.profile.name == 'darwin':
 			self.configure_flags.extend ([
 				'--disable-x',
+				'--disable-gtk-doc',
+				'--disable-cairo',
+				'--disable-cairo_gobject',
 				'--disable-xvideo',
+				'--disable-deinterlace',
 				'--disable-xshm'
 			])
 

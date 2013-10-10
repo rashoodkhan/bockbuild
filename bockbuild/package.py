@@ -29,8 +29,8 @@ class Package:
 			and not self.__class__.default_sources == None:
 			self.sources = list (self.__class__.default_sources)
 
-		if self.organization == None:
-			self.organization = self.extract_organization (self.sources[0])
+		#if self.organization == None:
+		#	self.organization = self.extract_organization (self.sources[0])
 
 		self.source_dir_name = source_dir_name
 		if self.source_dir_name == None:
@@ -194,6 +194,10 @@ class Package:
 	def is_successful_build(self, build_success_file, package_dir):
 		def is_newer(success_file):
 			mtime = os.path.getmtime(success_file)
+
+			if self.sources == None:
+				return True
+
 			for s in self.sources:
 				src = os.path.join(package_dir, s)
 				if os.path.isfile(src) and os.path.getmtime(src) > mtime:

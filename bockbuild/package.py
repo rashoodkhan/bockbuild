@@ -433,7 +433,7 @@ SourceForgePackage.default_sources = [
 
 class FreeDesktopPackage (ProjectPackage): pass
 FreeDesktopPackage.default_sources = [
-	'http://%{project}.freedesktop.org/releases/%{name}-%{version}.tar.gz'
+	'http://%{project}.freedesktop.org/src/%{name}-%{version}.tar.gz'
 ]
 
 class GitHubTarballPackage (Package):
@@ -488,6 +488,11 @@ class GitHubPackage (Package):
 class GstreamerPackage (ProjectPackage): pass
 GstreamerPackage.default_sources = [
 	'http://%{project}.freedesktop.org/src/%{name}/%{name}-%{version}.tar.gz'
+]
+
+class GstreamerXzPackage (ProjectPackage): pass
+GstreamerXzPackage.default_sources = [
+	'http://%{project}.freedesktop.org/src/%{name}/%{name}-%{version}.tar.xz'
 ]
 
 class XiphPackage (ProjectPackage): pass

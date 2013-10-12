@@ -1,7 +1,7 @@
 class GtkSharp3Package (Package):
 	def __init__ (self):
 		Package.__init__ (self, 'gtk-sharp', '2-12-branch')
-		self.commit = '7ce1457c136f13d28adb07fdee7dc06b459bc02c'
+		self.commit = '72b51cc71259571e368115e6dec94a6b3b01eeb0'
 		self.source_dir_name = 'mono-gtk-sharp-%s' % self.commit[:7]
 		self.configure = './autogen.sh --prefix="%{prefix}"'
 		self.sources = [

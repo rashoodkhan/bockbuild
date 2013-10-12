@@ -1,4 +1,4 @@
-GstreamerPackage ('gstreamer', 'gst-plugins-bad', '0.10.23', configure_flags = [
+GstreamerXzPackage ('gstreamer', 'gst-plugins-bad', '1.0.10', configure_flags = [
 	' --disable-gtk-doc',
 	' --with-plugins=quicktime',
 	' --disable-apexsink',

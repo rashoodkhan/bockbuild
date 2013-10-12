@@ -123,6 +123,7 @@ class BansheePackages:
 			#'gtk-sharp.py',
 			'gtk-sharp3.py',
 			'mono-addins.py',
+			'gstreamer-sharp.py',
 			'dbus-sharp.py',
 			'dbus-sharp-glib.py',
 			'taglib-sharp.py',

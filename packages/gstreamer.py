@@ -1,23 +1,13 @@
-class GstreamerBasePackage (GstreamerPackage):
+class GstreamerPackage (GstreamerXzPackage):
         def __init__ (self):
-                GstreamerPackage.__init__ (self,
+                GstreamerXzPackage.__init__ (self,
                         project  = 'gstreamer',
                         name = 'gstreamer',
-                        version = '0.10.36')
+                        version = '1.0.10')
 
                 self.configure = './configure --disable-gtk-doc --prefix="%{prefix}"'
 
-                # Mark pluginloader changes to be reverted 
-		self.sources.append ( 'http://cgit.freedesktop.org/gstreamer/gstreamer/patch/?id=f660536eb341767fbef0ccf1bf1139e2b4ce749c' )
-		self.sources.append ( 'http://cgit.freedesktop.org/gstreamer/gstreamer/patch/?id=918a62abcf7ae44b0bc84d57742d2f759e0d8ed6' )
-		self.sources.append ( 'http://cgit.freedesktop.org/gstreamer/gstreamer/patch/?id=159cf687a1b63f334ecec5e0b1ea4cd1bc8e7537' )  
-		self.sources.append ( 'https://dependencies.clementine-player.googlecode.com/git-history/16d3b3399216b081ed859ddc859bd584a7df082f/macosx/patches/gstreamer-01-flex.patch')
-
         def prep (self):
                 Package.prep (self)
-                self.sh ('patch -p1 -R < "%{sources[1]}"')
-                self.sh ('patch -p1 -R < "%{sources[2]}"')
-                self.sh ('patch -p1 -R < "%{sources[3]}"')
-                self.sh ('patch -p0 < "%{sources[4]}"')
 
-GstreamerBasePackage ()
+GstreamerPackage ()

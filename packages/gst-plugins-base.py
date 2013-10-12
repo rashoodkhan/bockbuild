@@ -1,7 +1,7 @@
-class GstPluginsBasePackage (GstreamerPackage):
+class GstPluginsBasePackage (GstreamerXzPackage):
 	def __init__ (self):
-		GstreamerPackage.__init__ (self, 'gstreamer', 'gst-plugins-base',
-			'0.10.36', configure_flags = [
+		GstreamerXzPackage.__init__ (self, 'gstreamer', 'gst-plugins-base',
+			'1.0.10', configure_flags = [
 				'--disable-gtk-doc',
 				'--disable-gio',
 				'--disable-gnome_vfs',

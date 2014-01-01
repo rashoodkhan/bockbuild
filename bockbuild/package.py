@@ -433,7 +433,7 @@ SourceForgePackage.default_sources = [
 
 class FreeDesktopPackage (ProjectPackage): pass
 FreeDesktopPackage.default_sources = [
-	'http://%{project}.freedesktop.org/src/%{name}-%{version}.tar.gz'
+	'http://%{project}.freedesktop.org/releases/%{name}-%{version}.tar.gz'
 ]
 
 class GitHubTarballPackage (Package):

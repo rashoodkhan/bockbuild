@@ -16,7 +16,15 @@ class DarwinProfile (UnixProfile):
 		if (not os.path.isdir (sdkroot)):
 			sdkroot = '/Developer/SDKs/'
 
-		if (os.path.isdir (sdkroot + 'MacOSX10.6.sdk')):
+		if (os.path.isdir (sdkroot + 'MacOSX10.9.sdk')):
+			self.os_x_minor = 9
+			self.mac_sdk_path = sdkroot + 'MacOSX10.9.sdk'
+			self.gcc_flags.extend ([
+				'-D_XOPEN_SOURCE',
+				'-isysroot %{mac_sdk_path}',
+				'-mmacosx-version-min=10.9',
+			])
+		elif (os.path.isdir (sdkroot + 'MacOSX10.6.sdk')):
 			self.os_x_minor = 6
 			self.mac_sdk_path = sdkroot + 'MacOSX10.6.sdk'
 			self.gcc_flags.extend ([
@@ -40,7 +48,7 @@ class DarwinProfile (UnixProfile):
 				'-D_XOPEN_SOURCE',
 				'-isysroot %{mac_sdk_path}',
 				'-mmacosx-version-min=10.8',
-			])
+			])	
 		else:
 			raise IOError ('Mac OS X SDKs 10.6, 10.7 or 10.8 not found')
 
@@ -57,9 +65,9 @@ class DarwinProfile (UnixProfile):
 		self.gcc_flags.extend (self.gcc_arch_flags)
 		self.ld_flags.extend (self.gcc_arch_flags)
 
-		#if (os.path.isfile ('/usr/bin/gcc-4.2')):
-		#	self.env.set ('CC',  'gcc-4.2')
-		#	self.env.set ('CXX', 'g++-4.2')
+		#if (os.path.isfile ('/usr/bin/')):
+		#	self.env.set ('CC',  'gcc')
+		#	self.env.set ('CXX', 'g++')
 		#else:
 		if os.getenv('BOCKBUILD_USE_CCACHE') is None:
 			self.env.set ('CC',  'xcrun gcc')
